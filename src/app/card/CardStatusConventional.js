@@ -3,7 +3,7 @@
 import { Card } from 'flowbite-react';
 import Image from 'next/image';
 
-export default function CardStatusConventional() {
+export default function CardStatusConventional(props) {
   return (
     <Card
       className="max-w-sm"
@@ -24,7 +24,7 @@ export default function CardStatusConventional() {
             src="/icons/icon_conventional.svg"
         />
         <h4 className='text-xl font-bold tracking-tight text-gray-600 dark:text-white'>
-            Idle
+          {props.refrigerationStatus ? `${props.refrigerationStatus}`: '-'}
         </h4>
       </div>
 
@@ -37,7 +37,7 @@ export default function CardStatusConventional() {
             src="/icons/icon_running.svg"
         />
         <h4 className='text-xl font-bold tracking-tight text-gray-600 dark:text-white'>
-            10 Jam
+          {props.uptime ? `${props.uptime} Jam`: '-'}
         </h4>
       </div>
     </Card>

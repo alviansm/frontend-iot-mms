@@ -32,7 +32,7 @@ const DasborNavbar = (props) => {
         </div>
         <Navbar.Collapse>
           <Navbar.Link active={...props.activelink === "Beranda" ? "true" : ""}>
-          <Link href="/">Beranda</Link>
+          <Link href="/">Monitoring</Link>
             </Navbar.Link>
           <Navbar.Link active={...props.activelink === "CaraKerja" ? "true" : ""}>
             <Link href="/cara-kerja">Cara Kerja</Link>

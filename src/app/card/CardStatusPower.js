@@ -3,7 +3,7 @@
 import { Card } from 'flowbite-react';
 import Image from 'next/image';
 
-export default function CardStatusPower() {
+export default function CardStatusPower(props) {
   return (
     <Card
       className="max-w-sm"
@@ -24,7 +24,7 @@ export default function CardStatusPower() {
             src="/icons/icon_compressor.svg"
         />
         <h4 className='text-xl font-bold tracking-tight text-gray-600 dark:text-white'>
-            400 W
+          {props.compressorPower ? `${props.compressorPower} Watt`: '-'}
         </h4>
       </div>
 
@@ -37,7 +37,7 @@ export default function CardStatusPower() {
             src="/icons/icon_fan_evap.svg"
         />
         <h4 className='text-xl font-bold tracking-tight text-gray-600 dark:text-white'>
-            105 W
+          {props.evaporatorFanCurrent ? `${props.evaporatorFanCurrent} A`: '-'}
         </h4>
       </div>
     </Card>

@@ -37,7 +37,7 @@ export default function CardStatusInside(props) {
             src="/icons/icon_humidity.svg"
         />
         <h4 className='text-xl font-bold tracking-tight text-gray-600 dark:text-white'>
-            70 %
+          {props.insideHumidity ? `${props.insideHumidity} %`: '-'}
         </h4>
       </div>
     </Card>
