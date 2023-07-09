@@ -37,7 +37,7 @@ export default function Home() {
   const [chargeTime, setChargeTime] = useState("");
   const [charging, setCharging] = useState("");
   const [tempArrayOfClock, setTempArrayOfClock] = useState([]);
-  const [options, setOptions] = useState({
+  const [options, setOptions] = useState({    
     title: {
       text: 'Temperature Chart',
       align: 'left'
@@ -47,12 +47,15 @@ export default function Home() {
       type: 'line',
     },
     xaxis: {
-      categories: [],
+      categories: ['16:27:45'],
       range: 30,
     },
     yaxis: {
       min: -25,
       max: 70
+    },
+    labels: {
+      showDuplicates: true
     }
   });
   const [series, setSeries] = useState(
@@ -98,99 +101,96 @@ export default function Home() {
   }, [apiData]);
 
   useEffect(() => {
-    if (Object.keys(apiData).length > 0) {
-      setTimeDay(apiData.time_day);
-      setTimeDate(apiData.time_date);
-      setTimeClock(apiData.time_clock);
-      setSenseT1(apiData.sense_t1);
-      setSenseT2(apiData.sense_t2);
-      setSenseT3(apiData.sense_t3);
-      setSenseT4(apiData.sense_t4);
-      setSenseT5(apiData.sense_t5);
-      setSenseT6(apiData.sense_t6);
-      setSenseT7(apiData.sense_t7);
-      setSenseT8(apiData.sense_t8);
-      setSenseTh1(apiData.sense_th1);
-      setSenseRh(apiData.sense_rh);
-      setSenseCurrent1(apiData.sense_current1);
-      setSenseCurrent2(apiData.sense_current2);
-      setCop(apiData.cop);
-      setPower(apiData.power);
-      setUptime(apiData.uptime);
-      setChargeTime(apiData.charging_time);
-      setCharging(apiData.charging);
-      // update series
-      // T1
-      let temp_series = [...series];
-      let temp_element_temperature_1 = {...temp_series[0]};
-      if (senseT1.length > 0) {
-        temp_element_temperature_1["data"].push(senseT1);
-      }      
-      temp_series[0] = temp_element_temperature_1;
-      setSeries(temp_series);
-      // T2
-      let temp_series_2 = [...series];
-      let temp_element_temperature_2 = {...temp_series_2[1]};
-      if (senseT2.length > 0) {
-        temp_element_temperature_2["data"].push(senseT2);
-      }
-      temp_series_2[1] = temp_element_temperature_2;
-      setSeries(temp_series_2);
-      // T3
-      let temp_series_3 = [...series];
-      let temp_element_temperature_3 = {...temp_series_3[2]};
-      if (senseT3.length > 0) {
-        temp_element_temperature_3["data"].push(senseT3);
-      }
-      temp_series_3[2] = temp_element_temperature_3;
-      setSeries(temp_series_3);
-      // T4
-      let temp_series_4 = [...series];
-      let temp_element_temperature_4 = {...temp_series_4[3]};
-      if (senseT4.length > 0) {
-        temp_element_temperature_4["data"].push(senseT4);
-      }
-      temp_series_4[3] = temp_element_temperature_4;
-      setSeries(temp_series_4);
-      // T5
-      let temp_series_5 = [...series];
-      let temp_element_temperature_5 = {...temp_series_5[4]};
-      if (senseT6.length > 0) {
-        temp_element_temperature_5["data"].push(senseT6);
-      }
-      temp_series_5[4] = temp_element_temperature_5;
-      setSeries(temp_series_5);
-      // T6
-      let temp_series_6 = [...series];
-      let temp_element_temperature_6 = {...temp_series_6[5]};
-      if (senseT7.length > 0) {
-        temp_element_temperature_6["data"].push(senseT7);
-      }
-      temp_series_6[5] = temp_element_temperature_6;
-      setSeries(temp_series_6);
-
-      // update categories
-      setOptions(prevOptions => ({
-        title: {
-          text: prevOptions.title.text,
-          align: prevOptions.title.align
-        },
-        chart: {
-          id: prevOptions.chart.id,
-          type: prevOptions.chart.type
-        },
-        xaxis: {
-          categories: [...prevOptions.xaxis.categories, timeClock],
-          range: prevOptions.xaxis.range
-        },
-        yaxis: {
-          min: prevOptions.yaxis.min,
-          max: prevOptions.yaxis.max
+    try {
+      if (Object.keys(apiData).length > 0) {
+        setTimeDay(apiData.time_day);
+        setTimeDate(apiData.time_date);
+        setTimeClock(apiData.time_clock);
+        setSenseT1(apiData.sense_t1);
+        setSenseT2(apiData.sense_t2);
+        setSenseT3(apiData.sense_t3);
+        setSenseT4(apiData.sense_t4);
+        setSenseT5(apiData.sense_t5);
+        setSenseT6(apiData.sense_t6);
+        setSenseT7(apiData.sense_t7);
+        setSenseT8(apiData.sense_t8);
+        setSenseTh1(apiData.sense_th1);
+        setSenseRh(apiData.sense_rh);
+        setSenseCurrent1(apiData.sense_current1);
+        setSenseCurrent2(apiData.sense_current2);
+        setCop(apiData.cop);
+        setPower(apiData.power);
+        setUptime(apiData.uptime);
+        setChargeTime(apiData.charging_time);
+        setCharging(apiData.charging);
+        // update series
+        // T1
+        let temp_series = [...series];
+        let temp_element_temperature_1 = {...temp_series[0]};
+        if (senseT1.length > 0) {
+          temp_element_temperature_1["data"].push(senseT1);
+        }      
+        temp_series[0] = temp_element_temperature_1;
+        setSeries(temp_series);
+        // T2
+        let temp_series_2 = [...series];
+        let temp_element_temperature_2 = {...temp_series_2[1]};
+        if (senseT2.length > 0) {
+          temp_element_temperature_2["data"].push(senseT2);
         }
-      }));
-      setApiData({});
-      console.log(series);
-      console.log(options);
+        temp_series_2[1] = temp_element_temperature_2;
+        setSeries(temp_series_2);
+        // T3
+        let temp_series_3 = [...series];
+        let temp_element_temperature_3 = {...temp_series_3[2]};
+        if (senseT3.length > 0) {
+          temp_element_temperature_3["data"].push(senseT3);
+        }
+        temp_series_3[2] = temp_element_temperature_3;
+        setSeries(temp_series_3);
+        // T4
+        let temp_series_4 = [...series];
+        let temp_element_temperature_4 = {...temp_series_4[3]};
+        if (senseT4.length > 0) {
+          temp_element_temperature_4["data"].push(senseT4);
+        }
+        temp_series_4[3] = temp_element_temperature_4;
+        setSeries(temp_series_4);
+        // T5
+        let temp_series_5 = [...series];
+        let temp_element_temperature_5 = {...temp_series_5[4]};
+        if (senseT6.length > 0) {
+          temp_element_temperature_5["data"].push(senseT6);
+        }
+        temp_series_5[4] = temp_element_temperature_5;
+        setSeries(temp_series_5);
+        // T6
+        let temp_series_6 = [...series];
+        let temp_element_temperature_6 = {...temp_series_6[5]};
+        if (senseT7.length > 0) {
+          temp_element_temperature_6["data"].push(senseT7);
+        }
+        temp_series_6[5] = temp_element_temperature_6;
+        setSeries(temp_series_6);
+        
+        // update categories
+        console.log(timeClock); 
+        if (timeClock.length > 0) {
+          console.log([...options.xaxis.categories, timeClock]);
+          setOptions({
+            ...options,
+            xaxis: {
+              ...options.xaxis,
+              categories: [...options.xaxis.categories, timeClock]
+            }
+          });
+        }
+  
+        // clear api data after it's use
+        setApiData({});
+      }
+    } catch {
+      
     }
   }, [apiData]);
 
