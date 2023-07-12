@@ -28,24 +28,25 @@ const DasborNavbar = (props) => {
           <Button className="mx-2 px-0 py-0" pill gradientMonochrome="info">
             <AiFillNotification className="mr-2 h-5 w-5" />
           </Button>
-          <Button>
-            <FaGithubAlt className="mr-2 h-5 w-5" />
-            Source Code
+          <Button className="p-0">
+            <Link className="p-0 m-0" href={"https://github.com/alviansm/frontend-iot-mms"} target="_blank">
+              <FaGithubAlt className="mr-2 h-5 w-5" />
+            </Link>
           </Button>
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
           <Navbar.Link active={...props.activelink === "Beranda" ? "true" : ""}>
-            <Link href="/">Monitoring</Link>
+            <Link href="/"><p>Monitoring</p></Link>
           </Navbar.Link>
           <Navbar.Link active={...props.activelink === "Kontrol" ? "true" : ""}>
-            <Link href="/kontrol">Kontrol</Link>
+            <Link href="/kontrol"><p>Kontrol</p></Link>
           </Navbar.Link>
           <Navbar.Link active={...props.activelink === "CaraKerja" ? "true" : ""}>
-            <Link href="/cara-kerja">Cara Kerja</Link>
+            <Link href="/cara-kerja"><p>Cara Kerja</p></Link>
           </Navbar.Link>
           <Navbar.Link active={...props.activelink === "Tentang" ? "true" : ""}>
-          <Link href="/tentang">Tentang</Link>
+          <Link href="/tentang"><p>Tentang</p></Link>
           </Navbar.Link>
         </Navbar.Collapse>
       </Navbar>

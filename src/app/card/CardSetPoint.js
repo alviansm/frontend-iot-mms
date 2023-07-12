@@ -25,7 +25,7 @@ export default function CardSetPoint(props) {
         alert('Set Point: ' + setPoint);
       }
     } catch (err) {
-      console.log(err);
+      alert('Tidak bisa mengirim data');
     }
   }
 
