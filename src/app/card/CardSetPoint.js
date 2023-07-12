@@ -6,7 +6,7 @@ import { useState } from 'react';
 
 export default function CardSetPoint(props) {
   const API_URL_SETPOINT = `${process.env.REACT_APP_API_URL}/api/change-setpoint`;
-  const [setPoint, useSetPoint] = useState(-20);
+  const [setPoint, setSetPoint] = useState(-20);
 
   let handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,7 +21,7 @@ export default function CardSetPoint(props) {
       });
       let resJson = await res.json();
       if (res.status === 200){
-        useSetPoint(-20);
+        setSetPoint(-20);
         alert('Set Point: ' + setPoint);
       }
     } catch (err) {
@@ -51,7 +51,7 @@ export default function CardSetPoint(props) {
               required
               type='number'
               value={setPoint}
-              onChange={(e) => useSetPoint(e.target.value)}
+              onChange={(e) => setSetPoint(e.target.value)}
               max={20}
               min={-20}
           />
