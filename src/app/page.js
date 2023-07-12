@@ -98,7 +98,7 @@ export default function Home() {
       getApi();
     }, 5000);
     return () => clearTimeout(timer);
-  }, [apiData]);
+  }, [apiData, API_URI]);
 
   useEffect(() => {
     try {
@@ -192,7 +192,7 @@ export default function Home() {
     } catch {
       
     }
-  }, [apiData]);
+  }, [apiData, options, senseT1, senseT2, senseT3, senseT4, senseT5, senseT7, series, timeClock]);
 
   return (
     <main suppressHydrationWarning>
