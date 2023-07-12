@@ -25,6 +25,7 @@ const LineChartTemperature = (props) => {
 
   return (
     <main className="mt-6">
+      {(typeof window !== 'undefined') &&
       <Chart 
           options={props.options ? props.options : options}
           series={props.series ? props.series : series} 
@@ -32,6 +33,7 @@ const LineChartTemperature = (props) => {
           width={620} 
           height={340} 
       />
+      }
     </main>
   );
 }
