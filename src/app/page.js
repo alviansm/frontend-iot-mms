@@ -192,7 +192,7 @@ export default function Home() {
     } catch {
       
     }
-  }, [apiData, options, senseT1, senseT2, senseT3, senseT4, senseT5, senseT7, series, timeClock]);
+  }, [apiData, options, senseT1, senseT2, senseT3, senseT4, senseT5, senseT6, senseT7, series, timeClock]);
 
   return (
     <main suppressHydrationWarning>
