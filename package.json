@@ -26,6 +26,7 @@
     "tailwindcss": "3.3.2"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.22.7"
+    "@babel/eslint-parser": "^7.22.7",
+    "babel-eslint": "^10.1.0"
   }
 }

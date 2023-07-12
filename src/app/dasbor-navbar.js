@@ -36,16 +36,16 @@ const DasborNavbar = (props) => {
           <Navbar.Toggle />
         </div>
         <Navbar.Collapse>
-          <Navbar.Link active={...props.activelink === "Beranda" ? "true" : ""}>
+          <Navbar.Link active={props.activelink === "Beranda" ? "true" : ""}>
             <Link href="/"><p>Monitoring</p></Link>
           </Navbar.Link>
-          <Navbar.Link active={...props.activelink === "Kontrol" ? "true" : ""}>
+          <Navbar.Link active={props.activelink === "Kontrol" ? "true" : ""}>
             <Link href="/kontrol"><p>Kontrol</p></Link>
           </Navbar.Link>
-          <Navbar.Link active={...props.activelink === "CaraKerja" ? "true" : ""}>
+          <Navbar.Link active={props.activelink === "CaraKerja" ? "true" : ""}>
             <Link href="/cara-kerja"><p>Cara Kerja</p></Link>
           </Navbar.Link>
-          <Navbar.Link active={...props.activelink === "Tentang" ? "true" : ""}>
+          <Navbar.Link active={props.activelink === "Tentang" ? "true" : ""}>
           <Link href="/tentang"><p>Tentang</p></Link>
           </Navbar.Link>
         </Navbar.Collapse>
