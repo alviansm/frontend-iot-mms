@@ -221,10 +221,12 @@ export default function Home() {
         </div>
 
         <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+          {(typeof window !== 'undefined') &&
           <LineChartTemperature 
             options={options}
             series={series}
           />
+          }
           <CardSummary 
             timeDay={timeDay}
             timeDate={timeDate}
