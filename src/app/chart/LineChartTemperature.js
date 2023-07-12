@@ -1,7 +1,8 @@
 'use client'
 
-import Chart from "react-apexcharts";
 import React, {Component, useState} from "react";
+import dynamic from "next/dynamic";
+const Chart = dynamic(() => import('react-apexcharts'), {ssr: false});
 
 const LineChartTemperature = (props) => {
   const [options, setOptions] = useState({
