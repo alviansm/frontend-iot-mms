@@ -14,7 +14,10 @@ export default function CardControlCompressor(props) {
       let res = await fetch(API_URL_SETPOINT, {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
-        mode: 'cors',    
+        mode: 'cors',
+        body: JSON.stringify({
+          password: props.password
+        }),    
       });
       let resJson = await res.json();
       if (res.status === 200){
@@ -24,6 +27,10 @@ export default function CardControlCompressor(props) {
       if (res.status === 503){
         setIsLoading(false);
         alert("Server lemot.");
+      }
+      if (res.status === 401) {
+        setIsLoading(false);
+        alert("Kata Sandi Salah.");
       }
     } catch {
       setIsLoading(false);
@@ -51,7 +58,7 @@ export default function CardControlCompressor(props) {
             src="/icons/icon_compressor.svg"
         />
         <Button onClick={handleSubmit}>
-          {isLoading ? <Spinner /> : 'Switch'}
+          <div>{isLoading ? <Spinner /> : 'Switch'}</div>
         </Button>
       </div>
 

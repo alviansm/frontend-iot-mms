@@ -1,14 +1,16 @@
 "use client";
 
-import { Button, Card, Label, TextInput } from 'flowbite-react';
+import { Button, Card, Label, TextInput, Spinner } from 'flowbite-react';
 import Image from 'next/image';
 import { useState } from 'react';
 
 export default function CardSetPoint(props) {
   const API_URL_SETPOINT = `${process.env.REACT_APP_API_URL}/api/change-setpoint`;
   const [setPoint, setSetPoint] = useState(-20);
+  const [isLoading, setIsLoading] = useState(false);
 
   let handleSubmit = async (e) => {
+    setIsLoading(true);
     e.preventDefault();
     try {
       let res = await fetch(API_URL_SETPOINT, {
@@ -16,16 +18,23 @@ export default function CardSetPoint(props) {
         headers: {'Content-Type': 'application/json'},
         mode: 'cors',
         body: JSON.stringify({
-          setpoint: setPoint
+          setpoint: setPoint,
+          password: props.password
         }),                
       });
       let resJson = await res.json();
       if (res.status === 200){
         setSetPoint(-20);
         alert('Set Point: ' + setPoint);
+        setIsLoading(false);
+      }
+      if (res.status === 401) {
+        setIsLoading(false);
+        alert("Kata Sandi Salah.");
       }
     } catch (err) {
       alert('Tidak bisa mengirim data');
+      setIsLoading(false);
     }
   }
 
@@ -59,7 +68,7 @@ export default function CardSetPoint(props) {
 
         <div className='grid grid-cols-2 gap-2 mt-2'>
           <div></div>
-          <Button type='Submit'>Kirim</Button>
+          <div><Button type='Submit'>{isLoading ? <Spinner /> : 'Switch'}</Button></div>
         </div>
       </form>
     </Card>

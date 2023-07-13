@@ -1,7 +1,7 @@
 'use client';
 
 import DasborNavbar from "./dasbor-navbar";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useReducer } from "react";
 import CardStatusInside from "./card/CardStatusInside";
 import CardStatusPower from "./card/CardStatusPower";
 import CardStatusPCM from "./card/CardStatusPCM";
@@ -9,8 +9,7 @@ import CardStatusConventional from "./card/CardStatusConventional";
 import LineChartTemperature from "./chart/LineChartTemperature";
 import CardSummary from "./card/CardSummary";
 import axios from "axios";
-import { Button, Modal } from "flowbite-react";
-import {AiOutlineExclamationCircle} from "react-icons/ai"
+import DefaultFooter from "./footer";
 
 export default function Home() {
   const [openModal, setOpenModal] = useState(undefined);
@@ -19,6 +18,7 @@ export default function Home() {
   const [timeDay, setTimeDay] = useState("");
   const [timeDate, setTimeDate] = useState("");
   const [timeClock, setTimeClock] = useState("");
+  const [clockArray, setClockArray] = useState([]);
   const [senseT1, setSenseT1] = useState("");
   const [senseT2, setSenseT2] = useState("");
   const [senseT3, setSenseT3] = useState("");
@@ -37,7 +37,7 @@ export default function Home() {
   const [chargeTime, setChargeTime] = useState("");
   const [charging, setCharging] = useState("");
   const [tempArrayOfClock, setTempArrayOfClock] = useState([]);
-  const [options, setOptions] = useState({    
+  const options = {   
     title: {
       text: 'Temperature Chart',
       align: 'left'
@@ -47,17 +47,17 @@ export default function Home() {
       type: 'line',
     },
     xaxis: {
-      categories: ['16:27:45'],
-      range: 30,
+      categories: clockArray,
+      range: 30
     },
     yaxis: {
       min: -25,
-      max: 70
+      max: 65
     },
     labels: {
       showDuplicates: true
     }
-  });
+  };  
   const [series, setSeries] = useState(
     [
       {
@@ -93,12 +93,13 @@ export default function Home() {
     const timer = setTimeout(() => {
       async function getApi() {
         const results = await axios.get(API_URI);
+        setClockArray([...clockArray, results.data.time_clock]);
         setApiData(results.data);
       }
       getApi();
     }, 5000);
     return () => clearTimeout(timer);
-  }, [apiData, API_URI]);
+  }, [apiData, API_URI, clockArray]);
 
   useEffect(() => {
     try {
@@ -174,17 +175,7 @@ export default function Home() {
         setSeries(temp_series_6);
         
         // update categories
-        console.log(timeClock); 
-        if (timeClock.length > 0) {
-          console.log([...options.xaxis.categories, timeClock]);
-          setOptions({
-            ...options,
-            xaxis: {
-              ...options.xaxis,
-              categories: [...options.xaxis.categories, timeClock]
-            }
-          });
-        }
+        
   
         // clear api data after it's use
         setApiData({});
@@ -233,6 +224,8 @@ export default function Home() {
         </div>
 
       </div>
+
+      <DefaultFooter />
     </main>
   )
 }

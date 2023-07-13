@@ -16,11 +16,18 @@ export default function CardSwitchEvapFan(props) {
         method: "POST",
         headers: {'Content-Type': 'application/json'},
         mode: 'cors',    
+        body: JSON.stringify({
+          password: props.password
+        }),   
       });
       let resJson = await res.json();
       if (res.status === 200){
         setIsLoading(false);
         alert("Berhasil melakukan switch.");
+      }
+      if (res.status === 401) {
+        setIsLoading(false);
+        alert("Kata Sandi Salah.");
       }
     } catch {
       setIsLoading(false);
@@ -48,7 +55,7 @@ export default function CardSwitchEvapFan(props) {
             src="/icons/icon_compressor.svg"
         />
         <Button onClick={handleSubmit}>
-          {isLoading ? <Spinner/> : 'Switch'}
+          <div>{isLoading ? <Spinner/> : 'Switch'}</div>
         </Button>
       </div>
 

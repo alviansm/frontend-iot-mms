@@ -20,7 +20,7 @@ const DasborNavbar = (props) => {
             className="mr-3 h-6 sm:h-9"
             src="/favicon.svg"
           />
-          <span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
+          <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
             Dasbor Kontainer
           </span>
         </Navbar.Brand>
