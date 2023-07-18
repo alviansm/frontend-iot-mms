@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import DasborNavbar from "../dasbor-navbar";
-import Footer from "../footer";
+import DefaultFooter from "../footer";
 
 export default function Tentang() {
     return (
