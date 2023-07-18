@@ -189,7 +189,7 @@ export default function Home() {
     <main suppressHydrationWarning>
       <DasborNavbar activelink="Beranda" />
 
-      <div className="container mx-auto mb-8">
+      <div className="container mx-auto mb-16">
 
         <div className="grid md:grid-cols-4 gap-4 grid-cols-2">
           <CardStatusInside 
