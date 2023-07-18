@@ -14,7 +14,7 @@ import DefaultFooter from "./footer";
 export default function Home() {
   const [openModal, setOpenModal] = useState(undefined);
   const props = { openModal, setOpenModal };
-  const [id, useId] = useState("");
+  const [reeferStatus, setReeferStatus] = useState(["Idle, Menyala, Mati"]);
   const [timeDay, setTimeDay] = useState("");
   const [timeDate, setTimeDate] = useState("");
   const [timeClock, setTimeClock] = useState("");
@@ -206,7 +206,7 @@ export default function Home() {
             pcmStatus={"Charging"}
           />
           <CardStatusConventional
-            refrigerationStatus={"Idle"}
+            refrigerationStatus={(power > 100) ? "Nyala" : "Mati"}
             uptime={uptime}
           />
         </div>

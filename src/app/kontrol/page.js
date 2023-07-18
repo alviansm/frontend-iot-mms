@@ -7,8 +7,7 @@ import CardSwitchEcoMode from "../card/CardSwitchEcoMode";
 import CardSwitchEvapFan from "../card/CardSwitchEvapFan";
 import DasborNavbar from "../dasbor-navbar";
 import { Button, Card, Label, TextInput, Spinner } from 'flowbite-react';
-import Image from 'next/image';
-import CardRemoveData from "../card/CardRemoveData";
+import Footer from "../footer";
 
 export default function Kontrol() {
   const API_URL_PASS = `${process.env.REACT_APP_API_URL}/api/check-password`;
@@ -102,6 +101,8 @@ export default function Kontrol() {
         </div>
 
       </div>
+
+      <Footer />
     </main>
     )
 }
