@@ -102,7 +102,7 @@ export default function Kontrol() {
 
       </div>
 
-      <Footer />
+      <DefaultFooter />
     </main>
     )
 }

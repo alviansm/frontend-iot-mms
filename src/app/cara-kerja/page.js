@@ -107,7 +107,7 @@ export default function CareKerja() {
 
       </div>
       
-      <Footer/>
+      <DefaultFooter/>
     </main>
     )
 }

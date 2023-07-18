@@ -69,7 +69,7 @@ export default function Tentang() {
         </div>
       </div>
       
-      <Footer />
+      <DefaultFooter />
     </main>
     )
 }
