@@ -4,7 +4,7 @@ import { Footer } from 'flowbite-react';
 
 export default function DefaultFooter() {
   return (
-    <Footer container className='fixed bottom-0'>
+    <Footer container className='fixed bottom-0 mt-8'>
       <Footer.Copyright
         by="AlviansMaulana™"
         href="https://github.com/alviansm/frontend-iot-mms"
